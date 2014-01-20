@@ -83,10 +83,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="breweries_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="breweries_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/breweries_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="42" selection-start="2143" selection-end="2143" vertical-scroll-proportion="0.7198276" vertical-offset="684" max-vertical-offset="1380">
+            <state line="79" column="42" selection-start="2143" selection-end="2143" vertical-scroll-proportion="0.0" vertical-offset="684" max-vertical-offset="1380">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="seeds.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db/seeds.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="38" selection-start="1059" selection-end="1059" vertical-scroll-proportion="0.5341246" vertical-offset="0" max-vertical-offset="674">
               <folding />
             </state>
           </provider>
@@ -111,7 +120,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/db/seeds.rb" />
         <option value="$PROJECT_DIR$/app/views/breweries/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/beers/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/breweries/panimot.html.erb" />
@@ -132,6 +140,7 @@
         <option value="$PROJECT_DIR$/app/models/beer.rb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/app/controllers/breweries_controller.rb" />
+        <option value="$PROJECT_DIR$/db/seeds.rb" />
       </list>
     </option>
   </component>
@@ -676,11 +685,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="28" selection-start="611" selection-end="611" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/breweries/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="19" selection-start="129" selection-end="129" vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="555" />
@@ -823,7 +827,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/breweries_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="42" selection-start="2143" selection-end="2143" vertical-scroll-proportion="0.7198276" vertical-offset="684" max-vertical-offset="1380">
+        <state line="79" column="42" selection-start="2143" selection-end="2143" vertical-scroll-proportion="0.0" vertical-offset="684" max-vertical-offset="1380">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="38" selection-start="1059" selection-end="1059" vertical-scroll-proportion="0.5341246" vertical-offset="0" max-vertical-offset="674">
           <folding />
         </state>
       </provider>
