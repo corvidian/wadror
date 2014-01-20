@@ -3,4 +3,7 @@
   <data-source source="LOCAL" name="Rails ratebeer: development" uuid="9cecadd0-ccba-4714-ba4c-04234d0574c5">
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
+  <data-source source="LOCAL" name="Rails ratebeer: test" uuid="ceac47b2-456f-4087-ba42-5b65952dc8b2">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
 </component>
