@@ -1,1 +1,1 @@
-http://immense-chamber-8041.herokuapp.com/breweries
+http://immense-chamber-8041.herokuapp.com/
