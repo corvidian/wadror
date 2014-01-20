@@ -2,7 +2,6 @@
 
 <p>
   <h2><%= @brewery.name %></h2>
-
 </p>
 
 <p>
@@ -21,5 +20,12 @@
   <% end %>
 </ol>
 
-<%= link_to 'Edit', edit_brewery_path(@brewery) %> |
-<%= link_to 'Back', breweries_path %>
+<% if @brewery.ratings.empty? %>
+<% else %>
+    <p>
+      Has <%= pluralize(@brewery.ratings.count, "rating") %>,
+      average: <%= @brewery.average_rating %>
+    </p>
+<% end %>
+
+<%= link_to 'Edit', edit_brewery_path(@brewery) %>
