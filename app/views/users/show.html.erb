@@ -25,6 +25,15 @@
   <% end %>
 </ul>
 
+<h2>beer clubs</h2>
+<ul>
+  <% @user.beer_clubs.each do |club| %>
+  <li>
+    <%= club.name %>
+  </li>
+  <% end %>
+</ul>
+
    <% if @user == current_user %>
       <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
       <%= link_to 'Edit', edit_user_path(@user) %> |

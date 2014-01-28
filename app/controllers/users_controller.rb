@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @beer_clubs = @user.beer_clubs
   end
 
   # GET /users/new
@@ -40,11 +41,8 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    unless current_user == @user
-      redirect_to @user, notice: 'Access denied.'
-    end
     respond_to do |format|
-      if @user.update(user_params)
+      if user_params.username.nil? and @user == current_user and @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -57,7 +55,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    if current_user == @user then
+    if current_user == @user
       @user.destroy
       reset_session
     end

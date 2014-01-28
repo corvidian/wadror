@@ -5,14 +5,16 @@ class Brewery < ActiveRecord::Base
 
   validates :name, length: {minimum:1}
   validates :year, numericality: {only_integer: true,
-                                  greater_than_or_equal_to: 1042},
-                   if: :too_old?
+                                  greater_than_or_equal_to: 1042}
+  validate :founding_year_cannot_be_in_the_future
 
   def to_s
     self.name
   end
 
-  def too_old?
-    year > Time.now.year
+  def founding_year_cannot_be_in_the_future
+    if year > Date.today.year
+      errors.add(:year, "can't be in the future")
+    end
   end
 end
