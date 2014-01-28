@@ -19,8 +19,9 @@ b3.beers.create name: 'Hefezeizen', style: 'Weizen'
 b3.beers.create name: 'Helles', style: 'Lager'
 b4.beers.create name: 'Hardcore IPA', style: 'IPA'
 
-b4.beers.first.ratings.create score:60
-b4.beers.first.ratings.create score:50
+u1 = User.create username:'Corvus', password:'Salainen', password_confirmation:'Salainen'
 
-b1.beers.first.ratings.create score:20
+
+b4.beers.first.ratings.create score:50, user_id:1
+b1.beers.first.ratings.create score:20, user_id:1
 
