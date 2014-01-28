@@ -20,8 +20,17 @@ b3.beers.create name: 'Helles', style: 'Lager'
 b4.beers.create name: 'Hardcore IPA', style: 'IPA'
 
 u1 = User.create username:'Corvus', password:'Salainen', password_confirmation:'Salainen'
+u2 = User.create username:'Cage', password:'Nicolas', password_confirmation:'Nicolas'
 
+b4.beers.first.ratings.create score:50, user_id:u1.id
+b1.beers.first.ratings.create score:20, user_id:u1.id
 
-b4.beers.first.ratings.create score:50, user_id:1
-b1.beers.first.ratings.create score:20, user_id:1
+b3.beers.first.ratings.create score:30, user_id:u2.id
+b2.beers.first.ratings.create score:43, user_id:u2.id
 
+bc1 = BeerClub.create name: 'Makkaratehtaan kittaajat', year:1992, city:'Vantaa'
+bc2 = BeerClub.create name: 'Tapiolan Tapsanjuojat', year:1973, city:'Espoo'
+
+bc1.memberships.create user_id:u1.id
+bc1.memberships.create user_id:u2.id
+bc2.memberships.create user_id:u1.id
