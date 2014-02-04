@@ -28,8 +28,8 @@ b1.beers.first.ratings.create score:20, user_id:u1.id
 b3.beers.first.ratings.create score:30, user_id:u2.id
 b2.beers.first.ratings.create score:43, user_id:u2.id
 
-bc1 = BeerClub.create name: 'Makkaratehtaan kittaajat', year:1992, city:'Vantaa'
-bc2 = BeerClub.create name: 'Tapiolan Tapsanjuojat', year:1973, city:'Espoo'
+bc1 = BeerClub.create name: 'Makkaratehtaan kittaajat', founded:1992, city:'Vantaa'
+bc2 = BeerClub.create name: 'Tapiolan Tapsanjuojat', founded:1973, city:'Espoo'
 
 bc1.memberships.create user_id:u1.id
 bc1.memberships.create user_id:u2.id
