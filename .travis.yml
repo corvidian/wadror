@@ -1,10 +1,16 @@
 language: ruby
-
 rvm:
- - 2.0.0
-
+- 2.0.0
 script:
- - bundle exec rake db:migrate --trace
- - RAILS_ENV=test bundle exec rake db:migrate --trace
- - bundle exec rake db:test:prepare
- - bundle exec rspec -fd spec/
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+deploy:
+  provider: heroku
+  api_key:
+    secure: SCxUIN3GQBhSO8kNAkiKdKSu6dcAbuq6z5iwzP1I5r4F147MD84nuJ5f98awOA/m6le2oh61Zp/uFYIC4niydPesU0iFlLMOQhjlEjPUuWjMg3HEfL0LNnplXBBvvxvwWDjrxlD6g16NgCDBCVipCuCu5ov8m61b34NebH473mE=
+  app: immense-chamber-8041
+  on:
+    repo: Corvidian/wadror
+  run: "rake db:migrate"

@@ -28,6 +28,10 @@ group :test do
   gem 'simplecov', require: false
 end
 
+group :development do
+  gem 'travis'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
