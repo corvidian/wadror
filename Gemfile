@@ -32,6 +32,8 @@ group :development do
   gem 'travis'
 end
 
+gem 'coveralls', require: false
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
