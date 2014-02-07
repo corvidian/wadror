@@ -13,4 +13,8 @@ deploy:
   app: immense-chamber-8041
   on:
     repo: Corvidian/wadror
-  run: "rake db:reset"
+  run: 
+    -"pg:reset --confirm immense-chamber-8041"
+    -"rake db:migrate"
+    -"rake db:seed"
+    -"restart"
