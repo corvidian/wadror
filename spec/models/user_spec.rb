@@ -1,17 +1,5 @@
 require 'spec_helper'
 
-def create_beer_with_rating(score, user)
-  beer = FactoryGirl.create(:beer)
-  FactoryGirl.create(:rating, score:score, beer:beer, user:user)
-  beer
-end
-
-def create_beers_with_ratings(*scores, user)
-  scores.each do |score|
-    create_beer_with_rating(score, user)
-  end
-end
-
 describe User do
   it "has the username set correctly" do
     user = User.new username:"Pekka"
@@ -77,5 +65,18 @@ describe User do
   describe "with a letter-only password" do
     subject{ User.create username:"Pekka", password:"alpakkamajakka", password_confirmation:"alpakkamajakka"}
     it { should_not be_valid }
+  end
+end
+
+
+def create_beer_with_rating(score, user)
+  beer = FactoryGirl.create(:beer)
+  FactoryGirl.create(:rating, score:score, beer:beer, user:user)
+  beer
+end
+
+def create_beers_with_ratings(*scores, user)
+  scores.each do |score|
+    create_beer_with_rating(score, user)
   end
 end
