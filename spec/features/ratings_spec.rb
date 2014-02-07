@@ -39,9 +39,15 @@ describe "Rating" do
       expect(page).to have_content('iso 3')
       expect(page).to have_content('Karhu')
       expect(page).to have_content('Number of ratings: 10')
+    end
+    it "when deleted, is removed from DB" do
+      visit user_path(user)
+      first(:link, "delete").click
 
-      save_and_open_page
+      expect(page).to have_content('has made 9 ratings')
     end
   end
+
+
 
 end

@@ -2,9 +2,7 @@ require 'spec_helper'
 include OwnTestHelper
 
 describe "User" do
-  before :each do
-    FactoryGirl.create :user
-  end
+  let!(:user) { FactoryGirl.create :user }
 
   describe "who has signed up" do
     it "can signin with right credentials" do
@@ -28,7 +26,22 @@ describe "User" do
     end
 
     describe "and has many ratings" do
+      before :each do
+        create_beers_with_ratings(10, 20, 15, 7, 9, user)
+      end
 
+      it "has ratings listed" do
+        visit user_path(user)
+        expect(page).to have_content('has made 5 ratings')
+      end
+
+      it "has only own ratings listed" do
+        other_user = FactoryGirl.create :user, username: "Tapsa"
+        create_beers_with_ratings(10, 20, 15, 7, 9, other_user)
+
+        visit user_path(user)
+        expect(page).to have_content('has made 5 ratings')
+      end
     end
   end
 
