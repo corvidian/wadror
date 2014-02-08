@@ -104,7 +104,7 @@ describe User do
     it "is the only rated if only one rating" do
       brewery = FactoryGirl.create :brewery
       create_beer_with_rating(10,user,brewery:brewery)
-      expect(user.favorite_brewery).to eq(brewery)
+      expect(user.favorite_brewery).to eq(brewery:brewery,score:10)
     end
 
     it "is the highest ranked if several ratings" do
@@ -116,7 +116,7 @@ describe User do
       create_beers_with_ratings(40,50,user,brewery:best)
       create_beers_with_ratings(10,20,user,brewery:brewery3)
 
-      expect(user.favorite_brewery).to eq(best)
+      expect(user.favorite_brewery).to eq(brewery:best,score:45)
     end
 
   end
