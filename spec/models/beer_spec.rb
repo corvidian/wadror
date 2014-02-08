@@ -21,3 +21,24 @@ describe Beer do
   end
 
 end
+
+describe 'Beers' do
+  let!(:user){ FactoryGirl.create :user }
+  before :each do
+  end
+
+  it "with one style reports that style" do
+    create_beer_with_rating(10, user, style:'IPA')
+
+    expect(Beer.styles).to eq(['IPA'])
+  end
+
+  it "with many styles reports those" do
+    styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
+    styles.each do |style|
+      create_beer_with_rating(10, user, style:style)
+    end
+
+  end
+
+end

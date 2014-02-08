@@ -19,4 +19,12 @@ class User < ActiveRecord::Base
     return nil if ratings.empty?
     ratings.order(score: :desc).limit(1).first.beer
   end
+
+  def favorite_style
+    Beer.select(:style).group(:style).joins(:ratings).where(ratings: {user: self})
+    .map { |i| i.style }
+    .map { |style|
+      {style => ratings.joins(:beer).where(beers: {style: style}).average(:score)}
+    }.reduce({}, :update).max
+  end
 end

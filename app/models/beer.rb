@@ -10,4 +10,8 @@ class Beer < ActiveRecord::Base
   def to_s
     "#{self.name} from #{self.brewery.name}"
   end
+
+  def self.styles
+    select('style').joins(:ratings).group('style').map{|i| i.style}
+  end
 end

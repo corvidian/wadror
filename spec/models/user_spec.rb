@@ -67,4 +67,27 @@ describe User do
     subject{ User.create username:"Pekka", password:"alpakkamajakka", password_confirmation:"alpakkamajakka"}
     it { should_not be_valid }
   end
+
+  describe "favorite style" do
+    let(:user) { FactoryGirl.create :user }
+    it "has method for determining favorite style" do
+      user.should respond_to :favorite_style
+    end
+
+    it "is the only rated if only one rating" do
+      create_beer_with_rating(10,user,style:'IPA')
+      expect(user.favorite_style).to eq(['IPA',10])
+    end
+
+    it "is the highest ranked if several ratings" do
+      create_beers_with_ratings(10,20,30,user,style:'IPA')
+      create_beers_with_ratings(40,50,user,style:'Lager')
+
+      expect(user.favorite_style).to eq(['Lager',45])
+    end
+
+    it "is nil without ratings" do
+      expect(user.favorite_style).to be(nil)
+    end
+  end
 end

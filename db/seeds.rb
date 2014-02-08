@@ -34,3 +34,14 @@ bc2 = BeerClub.create name: 'Tapiolan Tapsanjuojat', founded:1973, city:'Espoo'
 bc1.memberships.create user_id:u1.id
 bc1.memberships.create user_id:u2.id
 bc2.memberships.create user_id:u1.id
+
+b5 = Brewery.create name: 'Testi', year:2007
+u3 = User.create username:'Testaaja', password:'Nicolas1', password_confirmation:'Nicolas1', admin:false
+[10,20,30].each do |score|
+  beer = b5.beers.create name: "Testi #{score}", style: 'IPA'
+  beer.ratings.create score:score, user: u3
+end
+[40,50].each do |score|
+  beer = b5.beers.create name: "Testi #{score}", style: 'Lager'
+  beer.ratings.create score:score, user: u3
+end
