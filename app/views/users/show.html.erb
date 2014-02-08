@@ -23,7 +23,7 @@
 
 <% if @user.favorite_brewery %>
   <p>
-    favorite brewery: <%= link_to @user.favorite_brewery[:brewery].name, @user.favorite_brewery[:brewery] %>,
+    favorite brewery: <%= link_to @user.favorite_brewery[:brewery], @user.favorite_brewery[:brewery] %>,
     with an average of <%= @user.favorite_brewery[:score] %>
   </p>
 <% end %>

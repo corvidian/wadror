@@ -1,42 +1,42 @@
 require 'spec_helper'
 include OwnTestHelper
 
-describe "User" do
+describe 'User' do
   let!(:user) { FactoryGirl.create :user }
 
-  describe "who has signed up" do
-    it "can signin with right credentials" do
-      sign_in(username:"Pekka", password:"Foobar1")
+  describe 'who has signed up' do
+    it 'can signin with right credentials' do
+      sign_in(username: 'Pekka', password: 'Foobar1')
 
       expect(page).to have_content 'Welcome back!'
       expect(page).to have_content 'Pekka'
     end
 
-    it "is redirected back to signin form if wrong credentials given" do
-      sign_in(username:"Pekka", password:"Foobar")
+    it 'is redirected back to signin form if wrong credentials given' do
+      sign_in(username: 'Pekka', password: 'Foobar')
 
       expect(current_path).to eq(signin_path)
       expect(page).to have_content 'username and password do not match'
     end
   end
 
-  describe "who has signed in" do
+  describe 'who has signed in' do
     before :each do
-      sign_in(username:"Pekka", password:"Foobar1")
+      sign_in(username: 'Pekka', password: 'Foobar1')
     end
 
-    describe "and has many ratings" do
+    describe 'and has many ratings' do
       before :each do
         create_beers_with_ratings(10, 20, 15, 7, 9, user)
       end
 
-      it "has ratings listed" do
+      it 'has ratings listed' do
         visit user_path(user)
         expect(page).to have_content('has made 5 ratings')
       end
 
-      it "has only own ratings listed" do
-        other_user = FactoryGirl.create :user, username: "Tapsa"
+      it 'has only own ratings listed' do
+        other_user = FactoryGirl.create :user, username: 'Tapsa'
         create_beers_with_ratings(10, 20, 15, 7, 9, other_user)
 
         visit user_path(user)
@@ -45,7 +45,7 @@ describe "User" do
     end
   end
 
-  it "when signed up with good credentials, is added to the system" do
+  it 'when signed up with good credentials, is added to the system' do
     visit signup_path
     fill_in('user_username', with:'Brian')
     fill_in('user_password', with:'Secret55')
