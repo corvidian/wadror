@@ -21,10 +21,21 @@ class User < ActiveRecord::Base
   end
 
   def favorite_style
-    Beer.select(:style).group(:style).joins(:ratings).where(ratings: {user: self})
+    a = Beer.select(:style).group(:style).joins(:ratings).where(ratings: {user: self})
     .map { |i| i.style }
     .map { |style|
       {style => ratings.joins(:beer).where(beers: {style: style}).average(:score)}
-    }.reduce({}, :update).max
+    }.reduce({}, :update).max_by{|k,v| v}
+
+    { name: a.first, score:a.second } if a
+  end
+
+  def favorite_brewery
+    a = Brewery.select('breweries.*').joins(:beers)
+               .joins(:ratings).where(ratings: {user: self})
+               .group('breweries.id').average('ratings.score')
+               .max_by{|k,v| v}
+
+    Brewery.find(a.first) if a
   end
 end
