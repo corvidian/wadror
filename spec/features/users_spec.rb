@@ -46,7 +46,6 @@ describe 'User' do
 
       it 'has a favorite style listed' do
         visit user_path(user)
-        save_and_open_page
         expect(page).to have_content('favorite style')
       end
       it 'has a favorite brewery listed' do
