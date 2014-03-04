@@ -10,4 +10,11 @@ class PlacesController < ApplicationController
       render :index
     end
   end
+
+  def show
+    places = BeermappingApi.places_in(params[:city])
+    @place = places.select { |place|
+      place.send(:id) == params[:id]
+    }.first
+  end
 end

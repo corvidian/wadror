@@ -36,4 +36,8 @@ class User < ActiveRecord::Base
 
     { brewery: Brewery.find(a.first), score:a.second } if a
   end
+
+  def belongs_to?(club)
+    memberships.find_by(beer_club:club)
+  end
 end

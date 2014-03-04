@@ -6,4 +6,9 @@ class Place
   def self.rendered_fields
     [:id, :name, :status, :street, :city, :zip, :country, :overall ]
   end
+
+  def self.detail_fields
+    [:status, :street, :city, :zip, :country, :overall ]
+  end
+
 end

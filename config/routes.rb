@@ -21,7 +21,8 @@ Ratebeer::Application.routes.draw do
   get 'signin', to: 'sessions#new'
   delete 'signout', to: 'sessions#destroy'
 
-  resources :places, only:[:index, :show]
+  resources :places, only:[:index]
+  get 'places/:city/:id', to:'places#show', as: :bar
   post 'places', to:'places#search'
 
   # The priority is based upon order of creation: first created -> highest priority.
