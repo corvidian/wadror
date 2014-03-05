@@ -2,6 +2,9 @@ require 'spec_helper'
 include OwnTestHelper
 
 describe User do
+  let(:ipa){FactoryGirl.create(:style, name:'IPA') }
+  let(:lager){FactoryGirl.create(:style, name:'Lager') }
+
   it 'has the username set correctly' do
     user = User.new username: 'Pekka'
 
@@ -34,8 +37,8 @@ describe User do
     end
 
     it 'is the one with highest rating if several rated' do
-      create_beers_with_ratings(10, 20, 15, 7, 9, user)
-      best = create_beer_with_rating(25, user)
+      create_beers_with_ratings(10, 20, 15, 7, 9, user, style:ipa)
+      best = create_beer_with_rating(25, user, style:ipa)
 
       expect(user.favorite_beer).to eq(best)
     end
@@ -72,18 +75,20 @@ describe User do
 
   describe 'favorite style' do
     let(:user) { FactoryGirl.create :user }
+
+
     it 'has method for determining favorite style' do
       user.should respond_to :favorite_style
     end
 
     it 'is the only rated if only one rating' do
-      create_beer_with_rating(10,user,style:'IPA')
+      create_beer_with_rating(10,user,style:ipa)
       expect(user.favorite_style).to eq(name:'IPA',score:10)
     end
 
     it 'is the highest ranked if several ratings' do
-      create_beers_with_ratings(10,20,30,user,style:'IPA')
-      create_beers_with_ratings(40,50,user,style:'Lager')
+      create_beers_with_ratings(10,20,30,user,style:ipa)
+      create_beers_with_ratings(40,50,user, style:lager)
 
       expect(user.favorite_style).to eq(name:'Lager',score:45)
     end
@@ -105,7 +110,7 @@ describe User do
 
     it 'is the only rated if only one rating' do
       brewery = FactoryGirl.create :brewery
-      create_beer_with_rating(10,user,brewery:brewery)
+      create_beer_with_rating(10,user,brewery:brewery,style:ipa)
       expect(user.favorite_brewery).to eq(brewery:brewery,score:10)
     end
 
@@ -114,9 +119,9 @@ describe User do
       best = FactoryGirl.create :brewery, name: 'B'
       brewery3 = FactoryGirl.create :brewery, name: 'C'
 
-      create_beers_with_ratings(10,20,30,user,brewery:brewery1)
-      create_beers_with_ratings(40,50,user,brewery:best)
-      create_beers_with_ratings(10,20,user,brewery:brewery3)
+      create_beers_with_ratings(10,20,30,user,brewery:brewery1,style:ipa)
+      create_beers_with_ratings(40,50,user,brewery:best,style:ipa)
+      create_beers_with_ratings(10,20,user,brewery:brewery3,style:ipa)
 
       expect(user.favorite_brewery).to eq(brewery:best,score:45)
     end

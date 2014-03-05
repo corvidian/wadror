@@ -4,6 +4,7 @@ include OwnTestHelper
 describe 'User' do
   let!(:user) { FactoryGirl.create :user }
   let(:brewery) { FactoryGirl.create :brewery }
+  let(:style) { FactoryGirl.create :style }
 
   describe 'who has signed up' do
     it 'can signin with right credentials' do
@@ -28,7 +29,7 @@ describe 'User' do
 
     describe 'and has many ratings' do
       before :each do
-        create_beers_with_ratings(10, 20, 15, 7, 9, user, style:'IPA', brewery:brewery)
+        create_beers_with_ratings(10, 20, 15, 7, 9, user, style:style, brewery:brewery)
       end
 
       it 'has ratings listed' do
@@ -38,7 +39,7 @@ describe 'User' do
 
       it 'has only own ratings listed' do
         other_user = FactoryGirl.create :user, username: 'Tapsa'
-        create_beers_with_ratings(10, 20, 15, 7, 9, other_user)
+        create_beers_with_ratings(10, 20, 15, 7, 9, other_user, style:style)
 
         visit user_path(user)
         expect(page).to have_content('has made 5 ratings')

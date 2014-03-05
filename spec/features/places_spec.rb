@@ -16,19 +16,19 @@ describe "places" do
 
   it "if one is returned by the API, it is shown at the page" do
     BeermappingApi.stub(:places_in).with("kumpula").and_return(
-          [ Place.new(:name => "Oljenkorsi") ]
+          [ Place.new(name:'Oljenkorsi', city:'Kumpula', id:1) ]
       )
 
     visit places_path
     fill_in('city', with: 'kumpula')
-    click_button "Search"
+    click_button 'Search'
 
-    expect(page).to have_content "Oljenkorsi"
+    expect(page).to have_content 'Oljenkorsi'
   end
 
-  it "if several are returned by the API, they are shown at the page" do
-    BeermappingApi.stub(:places_in).with("kumpula").and_return(
-        [ Place.new(:name => "Oljenkorsi"), Place.new(:name => "Kumpulan Keidas"), Place.new(:name => "Gurulan salabaari") ]
+  it 'if several are returned by the API, they are shown at the page' do
+    BeermappingApi.stub(:places_in).with('kumpula').and_return(
+        [ Place.new(:name => 'Oljenkorsi', city:'Kumpula',id:1), Place.new(:name => "Kumpulan Keidas", city:'Kumpula',id:2), Place.new(:name => "Gurulan salabaari", city:'Kumpula',id:3) ]
     )
 
     visit places_path

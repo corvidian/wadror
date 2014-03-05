@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
             .group('style').average('ratings.score')
             .max_by{|k,v| v}
 
-    { name: a.first, score:a.second } if a
+    { name: a.first.name, score:a.second } if a
   end
 
   def favorite_brewery
