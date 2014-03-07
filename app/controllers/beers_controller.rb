@@ -8,6 +8,14 @@ class BeersController < ApplicationController
   # GET /beers.json
   def index
     @beers = Beer.all
+
+    order = params[:order] || 'name'
+
+    case order
+      when 'name'    then @beers.sort_by!{ |b| b.name }
+      when 'brewery' then @beers.sort_by!{ |b| b.brewery.name }
+      when 'style'   then @beers.sort_by!{ |b| b.style.name }
+    end
   end
 
   # GET /beers/1
@@ -24,6 +32,12 @@ class BeersController < ApplicationController
 
   # GET /beers/1/edit
   def edit
+  end
+
+  def list
+  end
+
+  def nglist
   end
 
   # POST /beers

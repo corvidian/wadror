@@ -1,21 +1,17 @@
 Ratebeer::Application.routes.draw do
-  resources :styles
-
-  resources :memberships, only: [:new, :create, :destroy]
-
-  resources :beer_clubs
-
-  resources :users
-
-  resources :beers
-
-  resources :breweries
-
-  resources :ratings, :only => [:index, :new, :create, :destroy]
-
-  resources :sessions, only: [:new, :create]
-
   root 'breweries#index'
+
+  get 'beerlist', to:'beers#list'
+  get 'ngbeerlist', to:'beers#nglist'
+
+  resources :styles
+  resources :memberships, only: [:new, :create, :destroy]
+  resources :beer_clubs
+  resources :users
+  resources :beers
+  resources :breweries
+  resources :ratings, :only => [:index, :new, :create, :destroy]
+  resources :sessions, only: [:new, :create]
 
   get 'kaikki_bisset', to: 'beers#index'
 
@@ -24,7 +20,7 @@ Ratebeer::Application.routes.draw do
   delete 'signout', to: 'sessions#destroy'
 
   resources :places, only:[:index]
-  get 'places/:city/:id', to:'places#show', as: :bar
+  get 'places/city/:id', to:'places#show', as: :bar
   post 'places', to:'places#search'
 
   # The priority is based upon order of creation: first created -> highest priority.

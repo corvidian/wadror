@@ -33,6 +33,8 @@ group :development do
   gem 'travis'
 end
 
+gem 'jquery-turbolinks'
+
 gem 'coveralls', require: false
 
 gem 'httparty'
