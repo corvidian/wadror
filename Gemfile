@@ -33,6 +33,9 @@ group :development do
   gem 'travis'
 end
 
+gem 'selenium-webdriver'
+gem 'database_cleaner', '< 1.1.0'
+
 gem 'jquery-turbolinks'
 
 gem 'coveralls', require: false
